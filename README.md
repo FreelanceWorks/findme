@@ -26,3 +26,7 @@ npm start
 `
 react-native run-ios
 `
+
+# Issues
+
+If there are any issues realted to Analyze then you need to delete the respective native build folder and run the reactnative native command to fix.

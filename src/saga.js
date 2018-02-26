@@ -1,18 +1,12 @@
 import { FETCHING_DATA, FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE } from './constants'
 import { put, takeEvery } from 'redux-saga/effects'
-import getPeople from './api'
 
-function* fetchData (action) {
-  try {
-    const data = yield getPeople()
-    yield put({ type: FETCHING_DATA_SUCCESS, data })
-  } catch (e) {
-    yield put({ type: FETCHING_DATA_FAILURE })
-  }
+import { appDataSagaWatcher } from './models/appData'
+
+function* rootSaga () {
+  yield [
+    ...appDataSagaWatcher
+  ]
 }
 
-function* dataSaga () {
-  yield takeEvery(FETCHING_DATA, fetchData)
-}
-
-export default dataSaga
+export default rootSaga
